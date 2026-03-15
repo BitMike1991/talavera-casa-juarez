@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { Menu, X, Instagram, Facebook, Mail, Phone, ExternalLink } from 'lucide-react';
 import { contactInfo } from '@/data/products';
@@ -173,9 +174,15 @@ export default function Layout({ children }) {
             <p className="font-body text-xs text-white/50">
               &copy; {new Date().getFullYear()} Talavera Casa Juárez. Handcrafted in Mexico.
             </p>
-            <p className="font-body text-xs text-white/50">
-              Inspired by Puebla&apos;s Talavera tradition
-            </p>
+            <a
+              href="https://bluewiseai.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
+            >
+              <span className="font-body text-xs text-white/50">Powered by</span>
+              <Image src="/bluewise-logo.png" alt="BlueWise AI" width={80} height={20} className="brightness-0 invert opacity-70" />
+            </a>
           </div>
         </div>
       </footer>

@@ -31,18 +31,18 @@ export default function Home() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-ivory/95 via-ivory/80 to-ivory/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-ivory via-ivory/90 to-ivory/60" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-2xl">
-            <p className="font-body text-sm tracking-[0.3em] uppercase text-talavera/70 mb-4">
+            <p className="font-body text-sm font-semibold tracking-[0.3em] uppercase text-talavera mb-4 drop-shadow-sm">
               Handcrafted in Mexico
             </p>
-            <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold text-talavera leading-[1.1] mb-6">
+            <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-extrabold text-talavera leading-[1.1] mb-6 drop-shadow-sm">
               Authentic Talavera from Puebla
             </h1>
-            <p className="font-body text-lg text-dark-light leading-relaxed mb-8 max-w-lg">
+            <p className="font-body text-lg font-medium text-dark leading-relaxed mb-8 max-w-lg">
               Each piece reflects craftsmanship, cultural heritage, and the beauty of handmade work — created by the Juárez family and shared with the world from Mexico.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
