@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import { ExternalLink, Sparkles, Heart, Paintbrush, Award } from 'lucide-react';
 import Layout from '@/components/Layout';
+import Lightbox from '@/components/Lightbox';
 import { heroProducts, categories, contactInfo } from '@/data/products';
 
 const values = [
@@ -13,6 +15,8 @@ const values = [
 ];
 
 export default function Home() {
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+
   // Hand-picked mix across categories for variety
   const featuredProducts = [
     categories[0].products[0], // Tequila Traditional
@@ -125,7 +129,7 @@ export default function Home() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
             {featuredProducts.map((product, i) => (
-              <div key={i} className="group relative aspect-[4/5] rounded-xl overflow-hidden cursor-pointer bg-cream">
+              <div key={i} className="group relative aspect-[4/5] rounded-xl overflow-hidden cursor-pointer bg-cream" onClick={() => setLightboxIndex(i)}>
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -206,6 +210,16 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {lightboxIndex !== null && (
+        <Lightbox
+          src={featuredProducts[lightboxIndex].image}
+          alt={featuredProducts[lightboxIndex].name}
+          onClose={() => setLightboxIndex(null)}
+          onPrev={lightboxIndex > 0 ? () => setLightboxIndex(lightboxIndex - 1) : null}
+          onNext={lightboxIndex < featuredProducts.length - 1 ? () => setLightboxIndex(lightboxIndex + 1) : null}
+        />
+      )}
     </Layout>
   );
 }

@@ -1,10 +1,20 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 import Layout from '@/components/Layout';
+import Lightbox from '@/components/Lightbox';
 import { categories, contactInfo } from '@/data/products';
 
 export default function Collection() {
+  const allProducts = categories.flatMap(c => c.products);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+
+  const openLightbox = (product) => {
+    const idx = allProducts.findIndex(p => p.image === product.image);
+    setLightboxIndex(idx);
+  };
+
   return (
     <Layout>
       <Head>
@@ -41,7 +51,7 @@ export default function Collection() {
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
               {category.products.map((product, i) => (
-                <div key={i} className="group cursor-pointer">
+                <div key={i} className="group cursor-pointer" onClick={() => openLightbox(product)}>
                   <div className="relative aspect-[4/5] rounded-xl overflow-hidden mb-3 bg-cream">
                     <Image
                       src={product.image}
@@ -89,6 +99,16 @@ export default function Collection() {
           </a>
         </div>
       </section>
+
+      {lightboxIndex !== null && (
+        <Lightbox
+          src={allProducts[lightboxIndex].image}
+          alt={allProducts[lightboxIndex].name}
+          onClose={() => setLightboxIndex(null)}
+          onPrev={lightboxIndex > 0 ? () => setLightboxIndex(lightboxIndex - 1) : null}
+          onNext={lightboxIndex < allProducts.length - 1 ? () => setLightboxIndex(lightboxIndex + 1) : null}
+        />
+      )}
     </Layout>
   );
 }

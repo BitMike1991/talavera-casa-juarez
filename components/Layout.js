@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import { Menu, X, Instagram, Facebook, Mail, Phone, ExternalLink } from 'lucide-react';
+import { Menu, X, Instagram, Mail, Phone, ExternalLink } from 'lucide-react';
 import { contactInfo } from '@/data/products';
 
 const navLinks = [
@@ -162,10 +162,6 @@ export default function Layout({ children }) {
                   <Instagram size={16} />
                   {contactInfo.instagram}
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors cursor-pointer">
-                  <Facebook size={16} />
-                  {contactInfo.facebook}
-                </a>
               </div>
             </div>
           </div>
@@ -181,7 +177,7 @@ export default function Layout({ children }) {
               className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
             >
               <span className="font-body text-xs text-white/50">Powered by</span>
-              <Image src="/bluewise-logo.png" alt="BlueWise AI" width={80} height={20} className="brightness-0 invert opacity-70" />
+              <span className="font-body text-xs font-semibold text-white/70">BlueWise AI</span>
             </a>
           </div>
         </div>

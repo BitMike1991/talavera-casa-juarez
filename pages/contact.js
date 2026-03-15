@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
-import { Phone, Mail, Instagram, MapPin, ExternalLink, Facebook } from 'lucide-react';
+import { Phone, Mail, Instagram, MapPin, ExternalLink } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { contactInfo } from '@/data/products';
 
@@ -78,10 +78,6 @@ export default function Contact() {
                 <a href="https://instagram.com/talaveracasajuarez" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 font-body text-base text-dark hover:text-talavera transition-colors cursor-pointer">
                   <Instagram size={20} className="text-talavera" />
                   {contactInfo.instagram}
-                </a>
-                <a href="https://www.facebook.com/people/Talavera-Casa-Ju%C3%A1rez/61575195498498/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 font-body text-base text-dark hover:text-talavera transition-colors cursor-pointer">
-                  <Facebook size={20} className="text-talavera" />
-                  Talavera Casa Juárez
                 </a>
                 <a href="https://tiktok.com/@talavera.casa.jur" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 font-body text-base text-dark hover:text-talavera transition-colors cursor-pointer">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" className="text-talavera">
