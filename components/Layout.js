@@ -75,9 +75,12 @@ export default function Layout({ children, locale = 'en' }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
-            <Link href={homeHref} className="flex flex-col cursor-pointer">
-              <span className="font-heading text-xl sm:text-2xl font-bold text-talavera tracking-wide">Talavera</span>
-              <span className="font-heading text-sm sm:text-base text-talavera -mt-1">Casa Juárez</span>
+            <Link href={homeHref} className="flex items-center gap-2 cursor-pointer">
+              <Image src="/logo.png" alt="Talavera Casa Juárez" width={44} height={44} className="sm:w-12 sm:h-12" />
+              <div className="flex flex-col">
+                <span className="font-heading text-xl sm:text-2xl font-bold text-talavera tracking-wide">Talavera</span>
+                <span className="font-heading text-sm sm:text-base text-talavera -mt-1">Casa Juárez</span>
+              </div>
             </Link>
 
             {/* Desktop nav */}
