@@ -39,10 +39,10 @@ export default function OurStory() {
                   Behind every piece of Talavera Casa Juárez is a family deeply rooted in the ceramic traditions of Puebla, Mexico. What began as a craft passed down through generations has become a living legacy — a bridge between ancestral artistry and the modern world.
                 </p>
                 <p>
-                  Led by Emanuel Juárez Sánchez, the family workshop produces every piece by hand, from shaping the raw clay to painting the intricate floral motifs that have defined Talavera for centuries. Each creation carries the warmth of family, the pride of heritage, and the precision of skilled hands.
+                  Led by Emanuel Juárez Sánchez, the family workshop in Puebla produces every piece by hand, from shaping the raw clay to painting the intricate floral motifs that have defined Talavera for centuries. Each creation carries the warmth of family, the pride of heritage, and the precision of skilled hands.
                 </p>
                 <p>
-                  Today, from their base in Puerto Morelos on Mexico&apos;s Caribbean coast, the Juárez family shares their art with the world — preserving tradition while embracing new horizons.
+                  From their workshop in Puebla and their point of sale in Puerto Morelos on Mexico&apos;s Caribbean coast, the Juárez family shares their art with the world — through local markets, trusted resellers across Mexico, and now internationally.
                 </p>
               </div>
             </div>

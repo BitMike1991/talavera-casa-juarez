@@ -103,14 +103,14 @@ export default function Shop() {
 
             {/* Custom */}
             <div className="bg-ivory rounded-2xl p-8 border border-talavera/10">
-              <h3 className="font-heading text-xl font-semibold text-dark mb-4">Custom & wholesale orders</h3>
+              <h3 className="font-heading text-xl font-semibold text-dark mb-4">Custom pieces</h3>
               <p className="font-body text-sm text-dark-light leading-relaxed mb-4">
-                Looking for a special piece, a custom design, or a larger decorative item? Contact us directly for personalized service.
+                Have a vision for a unique piece? We create custom Talavera tailored to your specifications — colors, patterns, sizes, and shapes made just for you. Custom pricing based on your project.
               </p>
               <ul className="space-y-2 font-body text-sm text-dark-light">
-                <li>Custom designs and colors</li>
-                <li>Large decorative pieces</li>
-                <li>Wholesale and bulk orders</li>
+                <li>Custom colors, motifs, and sizes</li>
+                <li>Personalized pieces for gifts or events</li>
+                <li>Large decorative or architectural pieces</li>
                 <li>Interior design projects</li>
               </ul>
               <a
@@ -120,6 +120,47 @@ export default function Shop() {
                 className="inline-flex items-center gap-2 mt-6 px-6 py-2.5 border-2 border-talavera text-talavera rounded-full font-body text-sm font-medium hover:bg-talavera hover:text-white transition-colors cursor-pointer"
               >
                 Contact on WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Wholesale & Resellers */}
+      <section className="py-16 sm:py-24 bg-ivory">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10">
+            <p className="font-body text-sm tracking-[0.2em] uppercase text-sage mb-3">For Resellers</p>
+            <h2 className="font-heading text-3xl font-bold text-talavera">
+              Wholesale & bulk orders
+            </h2>
+          </div>
+          <div className="bg-white rounded-2xl p-8 sm:p-10 border border-talavera/10">
+            <p className="font-body text-base text-dark-light leading-relaxed mb-6">
+              We work with resellers, boutiques, and distributors — both in Mexico and internationally. Our workshop in Puebla produces consistent, high-quality pieces at scale. Whether you run a shop, a gallery, or an online store, we offer bulk pricing on our full catalog.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+              <div className="text-center">
+                <p className="font-heading text-lg font-semibold text-talavera mb-1">Bulk pricing</p>
+                <p className="font-body text-sm text-dark-light">Volume discounts on all products</p>
+              </div>
+              <div className="text-center">
+                <p className="font-heading text-lg font-semibold text-talavera mb-1">Mexico & worldwide</p>
+                <p className="font-body text-sm text-dark-light">We ship to resellers anywhere</p>
+              </div>
+              <div className="text-center">
+                <p className="font-heading text-lg font-semibold text-talavera mb-1">Consistent supply</p>
+                <p className="font-body text-sm text-dark-light">Direct from our Puebla workshop</p>
+              </div>
+            </div>
+            <div className="text-center">
+              <a
+                href={contactInfo.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-8 py-3.5 bg-talavera text-white rounded-full font-body text-sm font-semibold hover:bg-talavera-light transition-colors cursor-pointer"
+              >
+                Contact Us for Wholesale Pricing
               </a>
             </div>
           </div>
