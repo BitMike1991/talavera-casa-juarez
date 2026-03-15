@@ -13,7 +13,15 @@ const values = [
 ];
 
 export default function Home() {
-  const featuredProducts = categories.flatMap(c => c.products).slice(0, 6);
+  // Hand-picked mix across categories for variety
+  const featuredProducts = [
+    categories[0].products[0], // Tequila Traditional
+    categories[1].products[2], // Decanter Blue Pastel
+    categories[2].products[0], // Cups Pastel Trio
+    categories[3].products[0], // Plate Baroque Blue
+    categories[5].products[4], // Necklace Heart Blue
+    categories[0].products[1], // Tequila Blue Cobalt 6pza
+  ];
 
   return (
     <Layout>
