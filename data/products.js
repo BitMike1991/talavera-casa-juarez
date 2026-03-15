@@ -97,7 +97,7 @@ export const contactInfo = {
   name: 'Emanuel Juárez Sánchez',
   title: 'Gerente General',
   phone: '+52 984 152 5413',
-  phoneDisplay: '(984) 152 54 13',
+  phoneDisplay: '+52 984-152-5413',
   email: 'talaveracasajuarez@gmail.com',
   instagram: '@talaveracasajuarez',
   tiktok: 'talavera.casa.jur',
