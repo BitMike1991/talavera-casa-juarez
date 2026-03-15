@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import { Menu, X, Instagram, Mail, Phone, ExternalLink, BrainCircuit } from 'lucide-react';
+import { Menu, X, Instagram, Mail, Phone, ExternalLink, Zap } from 'lucide-react';
 import { contactInfo } from '@/data/products';
 
 const navLinks = [
@@ -177,7 +177,7 @@ export default function Layout({ children }) {
               className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
             >
               <span className="font-body text-xs text-white/50">Powered by</span>
-              <BrainCircuit size={14} className="text-white/70" />
+              <Zap size={14} className="text-white/70" />
               <span className="font-body text-xs font-semibold text-white/70">BlueWise</span>
             </a>
           </div>
