@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { Menu, X, Instagram, Mail, Phone, ExternalLink, Zap } from 'lucide-react';
 import { contactInfo } from '@/data/products';
 
-const navLinks = [
+const navLinksEn = [
   { href: '/', label: 'Home' },
   { href: '/our-story', label: 'Our Story' },
   { href: '/talavera', label: 'Talavera' },
@@ -14,8 +15,58 @@ const navLinks = [
   { href: '/contact', label: 'Contact' },
 ];
 
-export default function Layout({ children }) {
+const navLinksEs = [
+  { href: '/es', label: 'Inicio' },
+  { href: '/es/nuestra-historia', label: 'Nuestra Historia' },
+  { href: '/es/talavera', label: 'Talavera' },
+  { href: '/es/taller', label: 'Taller' },
+  { href: '/es/coleccion', label: 'Colección' },
+  { href: '/es/tienda', label: 'Comprar en Etsy', external: true },
+  { href: '/es/contacto', label: 'Contacto' },
+];
+
+const pathMap = {
+  '/': '/es',
+  '/our-story': '/es/nuestra-historia',
+  '/talavera': '/es/talavera',
+  '/workshop': '/es/taller',
+  '/collection': '/es/coleccion',
+  '/shop': '/es/tienda',
+  '/contact': '/es/contacto',
+  '/es': '/',
+  '/es/nuestra-historia': '/our-story',
+  '/es/talavera': '/talavera',
+  '/es/taller': '/workshop',
+  '/es/coleccion': '/collection',
+  '/es/tienda': '/shop',
+  '/es/contacto': '/contact',
+};
+
+const footerText = {
+  en: {
+    tagline: 'Handcrafted in Mexico.',
+    explore: 'Explore',
+    contact: 'Contact',
+    copyright: 'Handcrafted in Mexico.',
+    powered: 'Powered by',
+  },
+  es: {
+    tagline: 'Hecho a mano en México.',
+    explore: 'Explorar',
+    contact: 'Contacto',
+    copyright: 'Hecho a mano en México.',
+    powered: 'Desarrollado por',
+  },
+};
+
+export default function Layout({ children, locale = 'en' }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
+  const navLinks = locale === 'es' ? navLinksEs : navLinksEn;
+  const etsyLabel = locale === 'es' ? 'Comprar en Etsy' : 'Shop on Etsy';
+  const ft = footerText[locale];
+  const switchPath = pathMap[router.pathname] || (locale === 'en' ? '/es' : '/');
+  const homeHref = locale === 'es' ? '/es' : '/';
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -24,7 +75,7 @@ export default function Layout({ children }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
-            <Link href="/" className="flex flex-col cursor-pointer">
+            <Link href={homeHref} className="flex flex-col cursor-pointer">
               <span className="font-heading text-xl sm:text-2xl font-bold text-talavera tracking-wide">Talavera</span>
               <span className="font-heading text-sm sm:text-base text-talavera -mt-1">Casa Juárez</span>
             </Link>
@@ -32,7 +83,7 @@ export default function Layout({ children }) {
             {/* Desktop nav */}
             <div className="hidden lg:flex items-center gap-6">
               {navLinks.map((link) => (
-                link.label === 'Shop on Etsy' ? (
+                link.external ? (
                   <a
                     key={link.href}
                     href={contactInfo.etsy}
@@ -40,7 +91,7 @@ export default function Layout({ children }) {
                     rel="noopener noreferrer"
                     className="flex items-center gap-1 px-4 py-2 bg-talavera text-white rounded-full font-body text-sm font-medium hover:bg-talavera-light transition-colors cursor-pointer"
                   >
-                    Shop on Etsy
+                    {link.label}
                     <ExternalLink size={14} />
                   </a>
                 ) : (
@@ -53,16 +104,31 @@ export default function Layout({ children }) {
                   </Link>
                 )
               ))}
+              {/* Language switcher */}
+              <Link
+                href={switchPath}
+                className="flex items-center gap-1 px-3 py-1.5 border border-talavera/30 rounded-full font-body text-xs font-semibold text-talavera hover:bg-talavera hover:text-white transition-colors cursor-pointer"
+              >
+                {locale === 'en' ? 'ES' : 'EN'}
+              </Link>
             </div>
 
             {/* Mobile menu button */}
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden p-2 text-talavera cursor-pointer"
-              aria-label="Toggle menu"
-            >
-              {menuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            <div className="flex items-center gap-3 lg:hidden">
+              <Link
+                href={switchPath}
+                className="px-2.5 py-1 border border-talavera/30 rounded-full font-body text-xs font-semibold text-talavera cursor-pointer"
+              >
+                {locale === 'en' ? 'ES' : 'EN'}
+              </Link>
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="p-2 text-talavera cursor-pointer"
+                aria-label="Toggle menu"
+              >
+                {menuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -71,7 +137,7 @@ export default function Layout({ children }) {
           <div className="lg:hidden bg-ivory border-t border-talavera/10">
             <div className="px-4 py-4 space-y-3">
               {navLinks.map((link) => (
-                link.label === 'Shop on Etsy' ? (
+                link.external ? (
                   <a
                     key={link.href}
                     href={contactInfo.etsy}
@@ -80,7 +146,7 @@ export default function Layout({ children }) {
                     onClick={() => setMenuOpen(false)}
                     className="flex items-center gap-2 px-4 py-2 bg-talavera text-white rounded-full font-body text-sm font-medium cursor-pointer w-fit"
                   >
-                    Shop on Etsy
+                    {link.label}
                     <ExternalLink size={14} />
                   </a>
                 ) : (
@@ -126,15 +192,15 @@ export default function Layout({ children }) {
               <h3 className="font-heading text-2xl font-bold mb-2">Talavera Casa Juárez</h3>
               <p className="font-body text-sm text-white/70 leading-relaxed">
                 Una artesanía hecha con el corazón.<br />
-                Handcrafted in Mexico.
+                {ft.tagline}
               </p>
             </div>
 
             {/* Links */}
             <div>
-              <h4 className="font-heading text-lg font-semibold mb-4">Explore</h4>
+              <h4 className="font-heading text-lg font-semibold mb-4">{ft.explore}</h4>
               <div className="space-y-2">
-                {navLinks.filter(l => l.label !== 'Shop on Etsy').map((link) => (
+                {navLinks.filter(l => !l.external).map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
@@ -148,7 +214,7 @@ export default function Layout({ children }) {
 
             {/* Contact */}
             <div>
-              <h4 className="font-heading text-lg font-semibold mb-4">Contact</h4>
+              <h4 className="font-heading text-lg font-semibold mb-4">{ft.contact}</h4>
               <div className="space-y-3">
                 <a href={`tel:${contactInfo.phone}`} className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors cursor-pointer">
                   <Phone size={16} />
@@ -158,7 +224,7 @@ export default function Layout({ children }) {
                   <Mail size={16} />
                   {contactInfo.email}
                 </a>
-                <a href={`https://instagram.com/talaveracasajuarez`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors cursor-pointer">
+                <a href="https://instagram.com/talaveracasajuarez" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors cursor-pointer">
                   <Instagram size={16} />
                   {contactInfo.instagram}
                 </a>
@@ -168,7 +234,7 @@ export default function Layout({ children }) {
 
           <div className="border-t border-white/20 mt-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="font-body text-xs text-white/50">
-              &copy; {new Date().getFullYear()} Talavera Casa Juárez. Handcrafted in Mexico.
+              &copy; {new Date().getFullYear()} Talavera Casa Juárez. {ft.copyright}
             </p>
             <a
               href="https://bluewiseai.com"
@@ -176,7 +242,7 @@ export default function Layout({ children }) {
               rel="noopener noreferrer"
               className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
             >
-              <span className="font-body text-xs text-white/50">Powered by</span>
+              <span className="font-body text-xs text-white/50">{ft.powered}</span>
               <Zap size={14} className="text-white/70" />
               <span className="font-body text-xs font-semibold text-white/70">BlueWise</span>
             </a>
