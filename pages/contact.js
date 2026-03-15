@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
-import { Phone, Mail, Instagram, MapPin, ExternalLink } from 'lucide-react';
+import { Phone, Mail, Instagram, MapPin, ExternalLink, Facebook } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { contactInfo } from '@/data/products';
 
@@ -51,9 +51,9 @@ export default function Contact() {
               <p className="font-body text-sm text-dark-light mb-6">{contactInfo.title}</p>
 
               <div className="space-y-4 mb-8">
-                <a href={`tel:${contactInfo.phone}`} className="flex items-center gap-3 font-body text-base text-dark hover:text-talavera transition-colors cursor-pointer">
+                <a href="tel:+529841525413" className="flex items-center gap-3 font-body text-base text-dark hover:text-talavera transition-colors cursor-pointer">
                   <Phone size={20} className="text-talavera" />
-                  {contactInfo.phoneDisplay}
+                  +52 984-152-5413
                 </a>
                 <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-3 font-body text-base text-dark hover:text-talavera transition-colors cursor-pointer">
                   <Mail size={20} className="text-talavera" />
@@ -62,6 +62,16 @@ export default function Contact() {
                 <a href="https://instagram.com/talaveracasajuarez" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 font-body text-base text-dark hover:text-talavera transition-colors cursor-pointer">
                   <Instagram size={20} className="text-talavera" />
                   {contactInfo.instagram}
+                </a>
+                <a href="https://www.facebook.com/people/Talavera-Casa-Ju%C3%A1rez/61575195498498/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 font-body text-base text-dark hover:text-talavera transition-colors cursor-pointer">
+                  <Facebook size={20} className="text-talavera" />
+                  Talavera Casa Juárez
+                </a>
+                <a href="https://tiktok.com/@talavera.casa.jur" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 font-body text-base text-dark hover:text-talavera transition-colors cursor-pointer">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" className="text-talavera">
+                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.11a8.16 8.16 0 004.76 1.52v-3.4a4.85 4.85 0 01-1-.54z"/>
+                  </svg>
+                  @talavera.casa.jur
                 </a>
                 <div className="flex items-center gap-3 font-body text-base text-dark">
                   <MapPin size={20} className="text-talavera flex-shrink-0" />
