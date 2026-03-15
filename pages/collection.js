@@ -42,12 +42,12 @@ export default function Collection() {
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
               {category.products.map((product, i) => (
                 <div key={i} className="group cursor-pointer">
-                  <div className="relative aspect-square rounded-xl overflow-hidden mb-3">
+                  <div className="relative aspect-[3/4] rounded-xl overflow-hidden mb-3 bg-cream">
                     <Image
                       src={product.image}
                       alt={product.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-contain group-hover:scale-105 transition-transform duration-300 p-2"
                     />
                   </div>
                   <h3 className="font-body text-sm font-medium text-dark group-hover:text-talavera transition-colors">
