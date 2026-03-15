@@ -29,8 +29,8 @@ export default function Contact() {
           src="/photos/necklace-heart-blue.jpg"
           alt="Talavera heart necklace and earring set"
           fill
-          className="object-cover object-[center_25%]"
-          style={{ objectPosition: 'center 25%' }}
+          className="object-cover"
+          style={{ objectPosition: 'center 75%' }}
           priority
         />
         <div className="absolute inset-0 bg-talavera/60" />
