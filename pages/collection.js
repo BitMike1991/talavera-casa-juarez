@@ -53,10 +53,7 @@ export default function Collection() {
                   <h3 className="font-body text-sm font-medium text-dark group-hover:text-talavera transition-colors">
                     {product.name}
                   </h3>
-                  <div className="flex items-baseline gap-2 mt-1">
-                    <p className="font-body text-sm font-semibold text-talavera">${product.price} USD</p>
-                    <p className="font-body text-xs text-dark-light">{product.pieces}</p>
-                  </div>
+                  <p className="font-body text-xs text-dark-light mt-1">{product.pieces}</p>
                 </div>
               ))}
             </div>
