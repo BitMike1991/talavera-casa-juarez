@@ -8,13 +8,28 @@ import { contactInfo } from '@/data/products';
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', interest: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Website Inquiry — ${form.interest || 'General'}`);
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\nInterest: ${form.interest}\n\n${form.message}`);
-    window.location.href = `mailto:${contactInfo.email}?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    setSending(true);
+    setError('');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) throw new Error('Failed to send');
+      setSubmitted(true);
+    } catch (err) {
+      setError('Something went wrong. Please try WhatsApp or email us directly.');
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -119,8 +134,8 @@ export default function Contact() {
               <h3 className="font-heading text-2xl font-semibold text-dark mb-6">Send us a message</h3>
               {submitted ? (
                 <div className="bg-sage/10 rounded-2xl p-8 text-center">
-                  <h4 className="font-heading text-xl font-semibold text-sage mb-2">Message prepared!</h4>
-                  <p className="font-body text-sm text-dark-light">Your email app should have opened with the message. If not, email us directly at {contactInfo.email}</p>
+                  <h4 className="font-heading text-xl font-semibold text-sage mb-2">Message sent!</h4>
+                  <p className="font-body text-sm text-dark-light">Thank you for reaching out. We&apos;ll get back to you shortly.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -173,11 +188,15 @@ export default function Contact() {
                       className="w-full px-4 py-3 rounded-lg border border-talavera/20 bg-ivory font-body text-sm focus:outline-none focus:ring-2 focus:ring-talavera/40 resize-none"
                     />
                   </div>
+                  {error && (
+                    <p className="font-body text-sm text-red-600">{error}</p>
+                  )}
                   <button
                     type="submit"
-                    className="w-full px-8 py-3.5 bg-talavera text-white rounded-full font-body text-sm font-semibold hover:bg-talavera-light transition-colors cursor-pointer"
+                    disabled={sending}
+                    className="w-full px-8 py-3.5 bg-talavera text-white rounded-full font-body text-sm font-semibold hover:bg-talavera-light transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {sending ? 'Sending...' : 'Send Message'}
                   </button>
                 </form>
               )}
